@@ -4,6 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '>=2.6.0'
 gem 'devise'
 
+#Bootstrap
+gem 'bootstrap' , '~> 4.0.0'
+
+gem 'jquery-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use sqlite3 as the database for Active Record
