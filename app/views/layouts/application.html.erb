@@ -52,15 +52,23 @@
           <%= button_to "Some Button", :method=> "exist_method" %>
 
 
+
         </div>
       </div>
     </div>
   </div>
 
-
-  <%= link_to "Add Friend", friend_path(:friend_id => current_user), :method => :post %>
-
-
+  <div id="users">
+  <% for user in User.all %>
+    <div class="user">
+      <p>
+        <strong><%=h user.email %></strong>
+        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+        <div class="clear"></div>
+      </p>
+    </div>
+  <% end %>
+  </div>
   <!-- Friends List-->
     <div class="panel-group box2">
                 <div class="panel panel-default">
