@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+.box2 {
+    position:fixed;
+    bottom:0;
+    right:0;
+}
+.navuser{
+  position:fixed;
+  top:0;
+  right:0;
+}
+    </style>
     <title>MVCSystemApi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,7 +31,61 @@
 	<p class="alert alert-danger"><%= alert %></p>
 	<% end %>
     <%= yield %>
-<p class="navbar-text float-right">
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a Friend</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <input type="text" name="" value="" placeholder="example@email.com">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send Friend Request</button>
+          <%= button_to "Some Button", :method=> "exist_method" %>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%= link_to "Add Friend", friend_path(:friend_id => current_user), :method => :post %>
+
+
+  <!-- Friends List-->
+    <div class="panel-group box2">
+                <div class="panel panel-default">
+
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">friend1</div>
+                          <div class="panel-body">friend2</div>
+                        <div class="panel-footer btn" data-toggle ="modal" data-target="#exampleModal">Add Friend...</div>
+                    </div>
+
+    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse1">Friends List</a>
+                        </h4>
+                    </div>
+                </div>
+    </div>
+hi<% User.select("last_name")%>
+<% @users = User.all %>
+<% @users.each do |user| %>
+  <%= user.first_name %><br/>
+<% end %>
+
+<!-- User Nav-->
+<p class="navbar-text float-right navuser">
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
