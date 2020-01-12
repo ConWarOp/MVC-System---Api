@@ -58,24 +58,20 @@
     </div>
   </div>
 
-  <div id="users">
-  <% for user in User.all %>
-    <div class="user">
-      <p>
-        <strong><%=h user.email %></strong>
-        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
-        <div class="clear"></div>
-      </p>
-    </div>
-  <% end %>
-  </div>
   <!-- Friends List-->
+  <% unless current_page?('/users/sign_in') || current_page?('/users/sign_up')%>
     <div class="panel-group box2">
                 <div class="panel panel-default">
 
                     <div id="collapse1" class="panel-collapse collapse">
-                        <div class="panel-body">friend1</div>
-                          <div class="panel-body">friend2</div>
+                      <% if defined? current_user.friends%>
+                      <% @friends = current_user.friends%>
+                      <% @friends.each do |user| %>
+                        <div class="panel-body"><%= user.first_name%></div>
+                      <% end %>
+                      <% else %>
+                        <div class="panel-body">you dont have friends :( </div>
+                      <% end %>
                         <div class="panel-footer btn" data-toggle ="modal" data-target="#exampleModal">Add Friend...</div>
                     </div>
 
@@ -86,12 +82,7 @@
                     </div>
                 </div>
     </div>
-hi<% User.select("last_name")%>
-<% @users = User.all %>
-<% @users.each do |user| %>
-  <%= user.first_name %><br/>
 <% end %>
-
 <!-- User Nav-->
 <p class="navbar-text float-right navuser">
 <% if user_signed_in? %>
