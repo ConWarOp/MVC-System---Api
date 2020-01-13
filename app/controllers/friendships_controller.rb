@@ -5,7 +5,9 @@ class FriendshipsController < ApplicationController
       flash[:notice] = "Added friend."
       redirect_to root_url
     else
-      flash[:error] = "Unable to add friend."
+      @error=@friendship.errors.full_messages.to_s
+      @error = @error[2...-2]
+      flash[:alert] = @error#}"Friend not added"
       redirect_to root_url
     end
   end
