@@ -1,0 +1,8 @@
+
+<div class="user">
+    <p>
+      <strong><%=@userbyemail.email %></strong>
+      <%= link_to "Add Friend", friendships_path(:friend_id => @userbyemail), :method => :post %>
+      <div class="clear"></div>
+    </p>
+  </div>

@@ -24,6 +24,8 @@
   </head>
 
   <body>
+
+
 	<% if notice %>
 	  <p class="alert alert-success"><%= notice %></p>
 	<% end %>
@@ -44,12 +46,15 @@
           </button>
         </div>
         <div class="modal-body">
-        <input type="text" name="" value="" placeholder="example@email.com">
+        <!--<input type="text" name="" value="" placeholder="example@email.com">-->
+        <%= form_tag("/pages/addfriend", method: 'get') do %>
+      <%= text_field_tag(:search, params[:search]) %>
+
+       <%= submit_tag("Search") %>
+      <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send Friend Request</button>
-          <%= button_to "Some Button", :method=> "exist_method" %>
 
 
 

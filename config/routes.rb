@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pages/home', to:'pages#home', as: 'home'
+  get 'pages/addfriend', to:'pages#addfriend'
   devise_for :users , :controllers => { registrations: 'registrations' }
   root to: 'pages#home'
   resources :friendships
