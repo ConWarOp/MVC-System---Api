@@ -6,6 +6,7 @@ gem 'devise'
 
 #Bootstrap
 gem 'bootstrap' , '~> 4.3.1'
+gem 'bootstrap_form'
 
 gem 'jquery-rails'
 
