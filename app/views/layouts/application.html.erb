@@ -64,7 +64,7 @@
   </div>
 
   <!-- Friends List-->
-  <% unless current_page?('/users/sign_in') || current_page?('/users/sign_up')%>
+  <% if user_signed_in?%>
     <div class="panel-group box2">
                 <div class="panel panel-default">
 
