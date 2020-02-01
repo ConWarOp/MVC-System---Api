@@ -5,8 +5,6 @@ before_action :redirect_if_not_signed_in, only: [:new]
   end
 
   def new
-    @branch = params[:branch]
-    @categories = Category.where(branch: @branch)
     @post = Post.new
   end
 
@@ -20,7 +18,7 @@ before_action :redirect_if_not_signed_in, only: [:new]
   end
 
  def post_params
-   params.require(:post).permit(:content, :title, :category_id)
+   params.require(:post).permit(:content, :title, :category)
                         .merge(user_id: current_user.id)
  end
 

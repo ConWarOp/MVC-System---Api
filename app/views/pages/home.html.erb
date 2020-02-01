@@ -19,7 +19,16 @@
 <% end %>
 </div>
 
+<div>
+<%= link_to "Create Post", new_post_path %>
+</div>
 
+<div id="main-content" class="col-sm-9">
+<%= render @posts %>  
+</div>
 
+<div class="row">
+  <%= render  'posts/search/search_form'%>
+</div>
 </body>
 </html>
