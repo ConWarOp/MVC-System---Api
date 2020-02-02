@@ -3,6 +3,9 @@ before_action :redirect_if_not_signed_in, only: [:new]
 
   def show
     @post = Post.find(params[:id])
+    if user_signed_in?
+      @message_has_been_sent = conversation_exist?
+    end
   end
 
   def new
@@ -29,4 +32,9 @@ before_action :redirect_if_not_signed_in, only: [:new]
                         .merge(user_id: current_user.id)
  end
 
+ private
+
+ def conversation_exist?
+   Conversation.between_users(current_user.id, @post.user.id).present?
+ end
 end
