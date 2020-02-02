@@ -11,4 +11,13 @@ before_action :authenticate_user!
 
                devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name,:last_name, :email,:user_ID, :password, :current_password)}
           end
+
+ def redirect_if_not_signed_in
+   redirect_to root_path if !user_signed_in?
+ end
+
+ def redirect_if_signed_in
+   redirect_to root_path if user_signed_in?
+ end
+
 end

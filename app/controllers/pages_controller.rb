@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 	def home
-
-	end
+          @posts = Post.limit(5)
+        end
 	def addfriend
 		if params[:search].present?
       @userbyemail = User.find_by_email(params[:search])
