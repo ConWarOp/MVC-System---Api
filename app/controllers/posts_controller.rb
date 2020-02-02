@@ -19,7 +19,7 @@ before_action :redirect_if_not_signed_in, only: [:new]
   end
 
   def search_by_category
-		if params[:search].present?
+    if params[:search].present?
       @searchposts = Post.searchbycategory(params[:search])
     end
   end
