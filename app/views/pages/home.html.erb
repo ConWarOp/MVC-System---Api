@@ -24,11 +24,19 @@
 </div>
 
 <div id="main-content" class="col-sm-9">
-<%= render @posts %>
+  <% if defined?(@searchposts)%>
+  <h1>HELLO</h1>
+  <%= puts "FOUND" %>
+  <%= render @searchposts %>
+  <%else%>
+  <h1>HELLO2</h1>
+  <%= puts "NOT FOUND" %>
+  <%= render @posts %>
+<%end%>
 </div>
 
-<!--<div class="row">
-  <%#= render  'posts/search/search_form'%>
-</div>-->
+<div class="row">
+  <%= render  'posts/search/search_form' %>
+</div>
 </body>
 </html>
