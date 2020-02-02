@@ -13,6 +13,14 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search(search)
+        if search
+              User.where('email LIKE ?',"%#{search}%")
+        else
+              User.all
+        end
+    end
+
  has_many :friendships
  has_many :friends, :through => :friendships
  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
