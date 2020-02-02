@@ -1,12 +1,12 @@
 
 <div class="user">
     <p>
-      <%= if @userbyemail.try(:email)%>
-      <strong><%=@userbyemail.try(:email)  %></strong>
+      <%if @userbyemail.try(:email)%>
+      <strong><%=@userbyemail.try(:email) %></strong>
       <%= link_to "Add Friend", friendships_path(:friend_id => @userbyemail), :method => :post %>
-      <%= else %>
+      <%else %>
       <strong>No user found ...</strong>
-      <%= end %>
+      <%end %>
       <div class="clear"></div>
     </p>
 

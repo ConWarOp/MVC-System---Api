@@ -33,28 +33,7 @@
     <%= yield %>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add a Friend</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <!--<input type="text" name="" value="" placeholder="example@email.com">-->
-            <%= form_tag("/pages/addfriend", method: 'get') do %>
-            <%= text_field_tag(:search, params[:search]) %>
-            <%= submit_tag("Search") %>
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render partial: "search_friend" %>
     <!-- Friends List-->
   <% if user_signed_in? %>
     <div class="panel-group box2">
@@ -68,7 +47,7 @@
           <% else %>
             <div class="panel-body">you dont have friends :( </div>
           <% end %>
-          <div class="panel-footer btn" data-toggle ="modal" data-target="#exampleModal">Add Friend...</div>
+          <div class="panel-footer btn" data-toggle ="modal" data-target="#myModal">Add Friend...</div>
         </div>
         <div class="panel-heading">
           <h4 class="panel-title">
