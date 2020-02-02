@@ -10,4 +10,11 @@ class Post < ApplicationRecord
              Post.all
        end
    end
+   def self.searchbytitle(title)
+         if title
+               Post.where('title LIKE ?',"%#{title}%")
+         else
+               Post.all
+         end
+     end
 end
