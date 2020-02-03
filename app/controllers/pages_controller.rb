@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 			@posts = Post.searchbytitle(params[:search])
 			end
 		else
-        @posts = Post.limit(5)
+        @posts = Post.all
         end
 			end
 	def addfriend
