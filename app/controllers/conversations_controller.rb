@@ -1,14 +1,33 @@
 class ConversationsController < ApplicationController
 
   def create
-    recipient_id = Post.find(params[:post_id]).user.id
-    conversation = Conversation.new(sender_id: current_user.id,recipient_id: recipient_id)
-    if conversation.save
-      Message.create(user_id: recipient_id, conversation_id: conversation.id, body: params[:message_body])
-      session[:conversations] ||= []
-      #@users = User.all.where.not(id: current_user)
-      @conversations = Conversation.includes(:recipient, :messages).find(session[:conversations])
+      @conversation = Conversation.get(current_user.id, params[:user_id])
+
+      add_to_conversations unless conversated?
+
+      respond_to do |format|
+        format.js
+      end
+  end
+
+  def close
+    @conversation = Conversation.find(params[:id])
+
+    session[:conversations].delete(@conversation.id)
+
+    respond_to do |format|
+      format.js
     end
+  end
+
+  private
+
+  def add_to_conversations
+    session[:conversations] ||= []
+    session[:conversations] << @conversation.id
+  end
+  def conversated?
+    session[:conversations].include?(@conversation.id)
   end
 
 end
