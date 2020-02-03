@@ -1,0 +1,9 @@
+<div class="container">
+  <h4><strong>Interested Users</strong></h4>
+  <%if defined?(@interestedUsers)%>
+  <%@interestedUsers.each do |item|%>
+  <strong><%=item.try(:email)  %></strong>
+  <br>
+  <%end%>
+  <%end%>
+</div>
