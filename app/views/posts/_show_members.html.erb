@@ -1,5 +1,5 @@
 <div class="container">
-  <h4><strong>Interested Users</strong></h4>
+  <h3><strong>Interested Users</strong></h3>
   <%if defined?(@interestedUsers)%>
   <%@interestedUsers.each do |item|%>
   <strong><%=item.try(:email)  %></strong>

@@ -5,19 +5,25 @@
 </head>
 <body>
 <div class="container text-center">
-  <h1>Homepage</h1>
-</div>
+  <br/><br/>
+  <h1>Homepage</h1><br/>
 
-<div>
-<%= link_to "Create Post", new_post_path %>
+  <%= link_to "Create Post", new_post_path, class: 'float-left btn btn-outline-secondary h4 mb-4 ' %>
+  <div class="form-inline">
+    <%= render  'posts/search/search_form' %>
+  </div>
+  <hr>
+<table>
+  <% @posts.each_slice(3) do |slice| %>
+    <tr>
+      <% slice.each do |post| %>
+        <td>
+          <%= render post %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
 </div>
-
-<div class="row">
-  <%= render  'posts/search/search_form' %>
-</div>
-<div id="main-content" class="col-sm-9">
-<%= render @posts %>
-</div>
-
 </body>
 </html>

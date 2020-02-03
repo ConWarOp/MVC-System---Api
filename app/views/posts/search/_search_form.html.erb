@@ -1,7 +1,7 @@
 <div class="col-sm-12">
   <%= form_tag("/posts/search_by_category", method: 'get') do %>
-  <%= text_field_tag(:search, params[:search]) %>
-  <%= select_tag 'Submit', options_for_select(['Title','Category'],:selected=>'Title')%>
-<%= submit_tag('Search') %>
+  <%= text_field_tag(:search, params[:search], class: 'form-control', style: 'width: 50%;') %>
+  <%= select_tag 'Submit', options_for_select(['Title','Category'],:selected=>'Title'), class: 'form-control'%>
+<%= submit_tag('Search',  class: 'btn btn-secondary') %>
   <%end%>
 </div>
