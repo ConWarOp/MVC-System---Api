@@ -3,6 +3,7 @@
   <%if defined?(@interestedUsers)%>
   <%@interestedUsers.each do |item|%>
   <strong><%=item.try(:email)  %></strong>
+  <%=link_to 'Chat',chats_index_path(:receiverid=>item.try(:user_id))%>
   <br>
   <%end%>
   <%end%>

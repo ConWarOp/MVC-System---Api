@@ -31,7 +31,9 @@ ActiveRecord::Schema.define(version: 2020_02_03_170240) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
+    t.string "sender_id"
+    t.string "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

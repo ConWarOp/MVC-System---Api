@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'pages/addfriend', to:'pages#addfriend'
   get 'posts/search_by_category', to:'pages#home'
   get 'chats/index', to:'chats#index'
+  get 'messages/index', to:'messages#index'
   post 'interests/create', to: 'interests#create'
   resources :messages,only: [:new,:create]
   devise_for :users , :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
