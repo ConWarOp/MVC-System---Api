@@ -10,4 +10,9 @@ class Conversation < ApplicationRecord
       where(sender_id: recipient_id, recipient_id: sender_id)
     )
   end
+
+  def opposed_user(user)
+    user == recipient ? sender : recipient
+  end
+  
 end

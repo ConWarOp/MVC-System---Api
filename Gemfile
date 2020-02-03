@@ -10,6 +10,7 @@ gem 'bootstrap_form'
 
 gem 'jquery-rails'
 
+gem 'uglifier', '>= 1.3.0'
 #authentication by omniauth
 gem 'omniauth-facebook'
 

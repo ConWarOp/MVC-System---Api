@@ -3,7 +3,9 @@
     <div class="col-sm-6 col-sm-offset-3"  style="text-align: center;">
         <h3><%= @post.title %></h3><br>
         <p><%= @post.content %></p>
-        <%= render leave_message_partial_path %>
+        <div class="contact-user">
+          <%= render leave_message_partial_path %>
+        </div>
       </div>
     </div>
 
