@@ -1,4 +1,14 @@
 <div id="message_holder">
+<% @messages.each do |item| %>
+  <div class="row">
+  <p>
+      <%= item.sender_id %> :
+  </p>
+  <p>
+      <%= item.content %>
+  </p>
+  </div>
+  <% end %>
 </div>
 <%= form_for @message,remote: true do |f|%>
 <%= f.text_field :content%>
