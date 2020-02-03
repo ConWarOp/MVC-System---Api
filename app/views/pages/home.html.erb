@@ -27,11 +27,7 @@
   <%= render  'posts/search/search_form' %>
 </div>
 <div id="main-content" class="col-sm-9">
-  <% if defined?(@searchposts)%>
-  <%= render @searchposts %>
-  <%else%>
   <%= render @posts %>
-<%end%>
 </div>
 
 </body>

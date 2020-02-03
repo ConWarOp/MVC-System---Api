@@ -18,12 +18,6 @@ before_action :redirect_if_not_signed_in, only: [:new]
     end
   end
 
-  def search_by_category
-    if params[:search].present?
-      @searchposts = Post.searchbycategory(params[:search])
-    end
-  end
-
  def post_params
    params.require(:post).permit(:content, :title, :category)
                         .merge(user_id: current_user.id)
