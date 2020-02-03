@@ -3,9 +3,9 @@ before_action :redirect_if_not_signed_in, only: [:new]
 
   def show
     @post = Post.find(params[:id])
-    if user_signed_in?
-      @message_has_been_sent = conversation_exist?
-    end
+    session[:conversations] ||= []
+    @users = User.all.where.not(id: current_user)
+    @conversations = Conversation.includes(:recipient, :messages).find(session[:conversations])
   end
 
   def new
@@ -30,11 +30,7 @@ before_action :redirect_if_not_signed_in, only: [:new]
  def post_params
    params.require(:post).permit(:content, :title, :category)
                         .merge(user_id: current_user.id)
- end
+  end
 
- private
 
- def conversation_exist?
-   Conversation.between_users(current_user.id, @post.user.id).present?
- end
 end
