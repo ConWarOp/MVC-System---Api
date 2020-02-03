@@ -7,9 +7,9 @@ before_action :authenticate_user!
      protected
 
           def configure_permitted_parameters
-               devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name,:last_name,:user_ID, :email, :password)}
+               devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name,:last_name,:user_id, :email, :password)}
 
-               devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name,:last_name, :email,:user_ID, :password, :current_password)}
+               devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name,:last_name, :email,:user_id, :password, :current_password)}
           end
 
  def redirect_if_not_signed_in
