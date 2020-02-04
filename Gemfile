@@ -9,7 +9,6 @@ gem 'bootstrap' , '~> 4.3.1'
 gem 'bootstrap_form'
 
 gem 'jquery-rails'
-gem 'redis', '~> 3.0'
 #authentication by omniauth
 gem 'omniauth-facebook'
 
