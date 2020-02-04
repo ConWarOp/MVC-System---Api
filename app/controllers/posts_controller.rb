@@ -3,7 +3,7 @@ before_action :redirect_if_not_signed_in, only: [:new]
 
   def show
     @post = Post.find(params[:id])
-    @interestedUsers=User.joins("INNER JOIN interests ON users.user_id = interests.user_id").where('interests.post_id=?' ,params[:id]).select("users.email")
+    @interestedUsers=User.joins("INNER JOIN interests ON users.user_id = interests.user_id").where('interests.post_id=?' ,params[:id]).select("users.email,users.user_id")
     #@interestedUsers=User.joins(Interest.where(post_id: params[:id])
   end
 
