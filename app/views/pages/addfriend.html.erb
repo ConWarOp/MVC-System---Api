@@ -1,17 +1,22 @@
+<br/>
+<div class ="d-flex justify-content-center">
+  <div class="user">
+      <h3>Friend List</h3><br/>
+      <p>
+        <div class="col-md-offset-3"  style="text-align: center;">
+        <%if defined?(@userbyemail)%>
+        <%@userbyemail.each do |item|%>
+            <strong><%=item.try(:email)  %></strong>
+            <%= link_to "Add Friend", friendships_path(:friend_id => item), :method => :post %>
+        <br>
+        <%end%>
+        <% else %>
+        <strong>No user found ...</strong>
+        <%end %>
+        <div class="clear"></div>
+      </div>
+      </p>
 
-<div class="user">
-    <p>
-      <%if defined?(@userbyemail)%>
-      <%@userbyemail.each do |item|%>
-      <strong><%=item.try(:email)  %></strong>
-      <%= link_to "Add Friend", friendships_path(:friend_id => item), :method => :post %>
-      <br>
-      <%end%>
-      <% else %>
-      <strong>No user found ...</strong>
-      <%end %>
-      <div class="clear"></div>
-    </p>
 
-
+    </div>
   </div>

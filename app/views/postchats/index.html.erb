@@ -1,18 +1,19 @@
-<div id="message_holder">
-<% @postmessages.each do |item| %>
-  <div class="row">
-  <p>
-      <%= item.sender_id %> :
-  </p>
-  <p>
-      <%= item.content %>
-  </p>
+<div class ="d-flex justify-content-center" style="margin-top: 20px;">
+  <div id="message_holder">
+    <div class="text-center">
+      <% @postmessages.last(15).each do |item| %>
+        <div class="row" style="bottom: auto;">
+          <p><%= item.sender_id %>: <%= item.content %></p>
+        </div>
+        <% end %>
+    </div>
+    <div class="form-inline" style="position: absolute; bottom: 30px;">
+      <%= form_for @postmessage,remote: true do |f|%>
+      <%= f.text_field :content, class: 'form-control',onfocus: "this.value=''"%>
+      <%= f.hidden_field :chat_id, :value => params[:postid], class: 'form-control'%>
+      <%= f.hidden_field :sender_id, :value => current_user.user_id, class: 'form-control'%>
+      <%= f.submit "Create Message", class: 'btn btn-outline-info form-control'%>
+      <%end%>
+    </div>
   </div>
-  <% end %>
 </div>
-<%= form_for @postmessage,remote: true do |f|%>
-<%= f.hidden_field :chat_id, :value => params[:postid]%>
-<%= f.text_field :content%>
-<%= f.hidden_field :sender_id, :value => current_user.user_id%>
-<%= f.submit%>
-<%end%>
