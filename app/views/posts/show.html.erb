@@ -5,6 +5,7 @@
         <p><%= @post.content %></p>
       </div>
     </div>
+    <%= link_to 'Join Discusion',postchats_index_path(:postid=>@post.try(:id))%>
 
   <%= render 'show_members'%>
 

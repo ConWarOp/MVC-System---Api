@@ -63,7 +63,7 @@
           <% if defined? current_user.friends%>
             <% @friends = current_user.friends%>
             <% @friends.each do |user| %>
-            <div class="panel-body"><%= user.first_name%></div>
+            <div class="panel-body"><%=link_to user.try(:email),chats_index_path(:receiverid=>user.try(:user_id))%></div>
           <% end %>
           <% else %>
             <div class="panel-body">you dont have friends :( </div>
