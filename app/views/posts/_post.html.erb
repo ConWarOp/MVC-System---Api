@@ -1,15 +1,23 @@
-<div class="col-sm-3 single-post-card" id=<%= post_path(post.id) %>>
+<div class="single-post-card" style="width: auto;" id=<%= post_path(post.id) %>>
   <div class="card">
     <div class="card-block">
-      <h3 class="post-text">
-        <%= truncate(post.category, :length => 60) %>
-      </h4>
-      <div class="post-content">
-
-        <h4><%= post.title %></h3>
-        <p><%= post.content %></p>
-        <%=link_to "I'm Interested", interests_create_path(:post=> post.id,:userid=>current_user.user_id),method: :post%>
-        <%= link_to "Show more ...", post_path(post.id), class: 'show' %>
+      <div class ="card-body">
+        <h4 class="card-title">
+          <%= truncate(post.category, :length => 60) %>
+        </h4>
+        <h5 class="card-subtitle  mb-2 text-muted">  <%= post.title %> </h5>
+        <div class="card-text">
+          <p><%= post.content %></p>
+          <div class="inline-block">
+            <div class ="card-link">
+              <%=link_to "I'm Interested", interests_create_path(:post=> post.id,:userid=>current_user.user_id),method: :post, style:'float: left;'%>
+            </div>
+            <div class="card-link">
+              <%= link_to "Show more...", post_path(post.id), class: 'show', style: 'float: right;'%>
+            </div>
+            <br/>
+          </div>
+        </div>
       </div>
     </div>
   </div>

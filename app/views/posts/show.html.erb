@@ -1,8 +1,8 @@
-<div id="single-post-content" class="container">
+<div id="single-post-content" class="text-center border border-light p-5 badge-light">
     <div class ="d-flex justify-content-center">
     <div class="col-sm-6 col-sm-offset-3"  style="text-align: center;">
-        <h3><%= @post.title %></h3><br>
-        <p><%= @post.content %></p>
+        <h3>Title - <%= @post.title %></h3><br>
+        <p ><%= @post.content %></p>
       </div>
     </div>
     <%= link_to 'Join Discusion',postchats_index_path(:postid=>@post.try(:id))%>
